@@ -1,0 +1,24 @@
+.item {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item.packed {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.item.unpacked {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.controls button {
+    margin: 0 0.5rem;
+    padding: 0.2rem 0.5rem;
+}
