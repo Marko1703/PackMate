@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Item from '../Item/item';
 import Summary from '../Summary/Summary';
 import './ItemList.css';
+import { v4 as uuidv4 } from 'uuid';
 
 type ItemType = {
   id: string;
@@ -27,6 +28,9 @@ const initialFemaleItems: ItemType[] = [
 const ItemListPage: React.FC = () => {
   const { gender } = useParams<{ gender: string }>();
   const [items, setItems] = useState<ItemType[]>([]);
+  const [newItem, setNewItem] = useState('');
+  const [category, setCategory] = useState('Essentials');
+  const [sortType, setSortType] = useState('');
 
   useEffect(() => {
     if (gender === 'male') {
@@ -52,10 +56,61 @@ const ItemListPage: React.FC = () => {
     );
   };
 
+  const handleAddItem = () => {
+    if (newItem && category) {
+      setItems(prevItems => [
+        ...prevItems,
+        { id: uuidv4(), description: newItem, quantity: 1, isPacked: false, category },
+      ]);
+      setNewItem('');
+    }
+  };
+  
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortType(e.target.value);
+    setItems(prevItems =>
+      [...prevItems].sort((a, b) => {
+        if (sortType === 'title') return a.description.localeCompare(b.description);
+        if (sortType === 'quantity') return b.quantity - a.quantity;
+        return 0;
+      })
+    );
+  };
+
+  const handleReset = () => {
+    setItems(prevItems => 
+      prevItems.map(item => ({ ...item, isPacked: false, quantity: 1}))
+    )
+  };
+
   const categories = Array.from(new Set(items.map(item => item.category)));
 
   return (
     <div className="item-list-page">
+      <div className="controls">
+      <input
+        type="text"
+        value={newItem}
+        onChange={(e) => setNewItem(e.target.value)}
+        placeholder="Add new item"
+      />
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="Essentials">Essentials</option>
+        <option value="Toiletries">Toiletries</option>
+        {/* Add more categories as needed */}
+      </select>
+      <button onClick={handleAddItem}>Add Item</button>
+
+      <select value={sortType} onChange={handleSortChange}>
+        <option value="">Sort By</option>
+        <option value="title">Title</option>
+        <option value="quantity">Quantity</option>
+        {/* Add more sorting options as needed */}
+      </select>
+
+      <button onClick={handleReset}>Reset Items</button>
+    </div>
+
       {categories.map(category => (
         <div key={category} className="category">
           <h2>{category}</h2>
