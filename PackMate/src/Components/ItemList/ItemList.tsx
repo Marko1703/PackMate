@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Item from '../Item/item';
 import Summary from '../Summary/Summary';
 import './ItemList.css';
@@ -85,6 +85,12 @@ const ItemListPage: React.FC = () => {
 
   const categories = Array.from(new Set(items.map(item => item.category)));
 
+  const navigate = useNavigate();
+
+  const handleNavigation = (destination: string) => {
+    navigate(`/destination/${destination}`);
+  };
+
   return (
     <div className="item-list-page">
       <div className="controls">
@@ -127,6 +133,9 @@ const ItemListPage: React.FC = () => {
         </div>
       ))}
       <Summary items={items} />
+      <div className='destinationBtn'>
+        <button onClick={() => handleNavigation('destination')}>Destination</button>
+      </div>
     </div>
   );
 };
