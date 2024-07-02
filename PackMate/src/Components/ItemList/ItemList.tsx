@@ -133,8 +133,8 @@ const ItemListPage: React.FC = () => {
         </div>
       ))}
       <Summary items={items} />
-      <div className='destinationBtn'>
-        <button onClick={() => handleNavigation('destination')}>Destination</button>
+      <div className='button-container'>
+        <button className='destination' onClick={() => handleNavigation('destination')}>Destination</button>
       </div>
     </div>
   );

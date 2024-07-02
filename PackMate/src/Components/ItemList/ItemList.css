@@ -16,7 +16,12 @@
     margin-bottom: 1rem;
 }
 
-.destinationBtn {
-    margin-top: 10px;
+.button-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
+}
+
+.destination {
+    margin-top: 10px;
 }

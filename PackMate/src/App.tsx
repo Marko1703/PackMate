@@ -6,6 +6,7 @@ import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 import Header from './Components/Header/header';
 import Footer from './Components/Footer/footer';
 import './App.css';
+import DestinationPage from './Components/DestinationPage/DestinationPage';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/items/:gender" element={<ItemListPage />} />
+            <Route path="/destination/:destination" element={<DestinationPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
