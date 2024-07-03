@@ -1,0 +1,57 @@
+.destination {
+    padding: 20px;
+}
+
+.header-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.tripDetails {
+    margin-left: auto;
+}
+
+input {
+    width: 98.5%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.country-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.country-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.country-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.country-item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.country-item h2 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.country-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
