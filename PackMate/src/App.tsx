@@ -7,6 +7,8 @@ import Header from './Components/Header/header';
 import Footer from './Components/Footer/footer';
 import './App.css';
 import DestinationPage from './Components/DestinationPage/DestinationPage';
+import TripDetailsPage from './Components/TripDetails/TripDetails';
+import SummaryPage from './Components/SummaryPage/SummaryPage';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +20,8 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/items/:gender" element={<ItemListPage />} />
             <Route path="/destination/:destination" element={<DestinationPage />} />
+            <Route path='/tripDetails/:tripDetails' element={<TripDetailsPage />} />
+            <Route path='/summary-page' element={<SummaryPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

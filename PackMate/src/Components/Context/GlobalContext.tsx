@@ -1,5 +1,12 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+interface PackedItem {
+  description: string;
+  quantity: number;
+  isPacked: boolean;
+  category: string;
+}
+
 interface TripDetails {
   firstName: string;
   lastName: string;
@@ -13,6 +20,8 @@ interface DestinationContextType {
   setDestination: (destination: string) => void;
   tripDetails: TripDetails;
   setTripDetails: (details: TripDetails) => void;
+  packedItems: PackedItem[];
+  setPackedItems: (items: PackedItem[]) => void;
 }
 
 interface DestinationProviderProps {
@@ -31,8 +40,10 @@ export const DestinationProvider: React.FC<DestinationProviderProps> = ({ childr
     phoneNumber: '',
   });
 
+  const [packedItems, setPackedItems] = useState<PackedItem[]>([]);
+
   return (
-    <DestinationContext.Provider value={{ destination, setDestination, tripDetails, setTripDetails }}>
+    <DestinationContext.Provider value={{ destination, setDestination, tripDetails, setTripDetails, packedItems, setPackedItems }}>
       {children}
     </DestinationContext.Provider>
   );

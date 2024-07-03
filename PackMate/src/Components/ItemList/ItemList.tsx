@@ -4,6 +4,7 @@ import Item from '../Item/item';
 import Summary from '../Summary/Summary';
 import './ItemList.css';
 import { v4 as uuidv4 } from 'uuid';
+import { useDestination } from '../Context/GlobalContext';
 
 type ItemType = {
   id: string;
@@ -31,6 +32,7 @@ const ItemListPage: React.FC = () => {
   const [newItem, setNewItem] = useState('');
   const [category, setCategory] = useState('Essentials');
   const [sortType, setSortType] = useState('');
+  const { setPackedItems } = useDestination();
 
   useEffect(() => {
     if (gender === 'male') {
@@ -39,6 +41,10 @@ const ItemListPage: React.FC = () => {
       setItems(initialFemaleItems);
     }
   }, [gender]);
+
+  useEffect(() => {
+    setPackedItems(items);
+  }, [items, setPackedItems]);
 
   const togglePacked = (id: string) => {
     setItems(prevItems =>

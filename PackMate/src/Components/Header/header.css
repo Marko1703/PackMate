@@ -2,5 +2,6 @@
     text-align: center;
     padding: 1rem;
     background-color: #282c34;
-    color: white;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
