@@ -1,7 +1,16 @@
 .header {
+    background-color: #2C3E50;
+    padding: 20px;
     text-align: center;
-    padding: 1rem;
-    background-color: #282c34;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #357ABD;
+}
+
+.header h1 {
     color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 2.5em;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
